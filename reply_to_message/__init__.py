@@ -3,6 +3,9 @@
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 
+
+NGROK_SUBDOMAIN = '953334ba1618'
+
 app = Flask(__name__)
 
 
@@ -16,7 +19,8 @@ def sms_ahoy_reply():
 
     # Here', we're generating TwiML using the Python helper library
     resp = MessagingResponse()
-    resp.message('TwilioQuest rules', action='/status_callback')
+    # resp.message('TwilioQuest rules', action='/status_callback')
+    resp.redirect('http://www.foo.com/nextInstructions')
 
     return str(resp)
 
