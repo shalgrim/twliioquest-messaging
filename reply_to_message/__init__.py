@@ -11,14 +11,22 @@ app = Flask(__name__)
 @app.route('/sms', methods=['GET', 'POST'])
 def sms_ahoy_reply():
     print(
-        f'Incoming message from {request.values.get("From")}: ${request.values.get("Body")}'
+        f'Incoming message from {request.values.get("From")}: {request.values.get("Body")}'
     )
 
     # Here', we're generating TwiML using the Python helper library
     resp = MessagingResponse()
-    resp.message("TwilioQuest rules")
+    resp.message('TwilioQuest rules', action='/status_callback')
 
     return str(resp)
+
+
+@app.route('/status_callback', methods=['POST'])
+def sms_ahoy_reply_status_callback():
+    sid = request.values.get('MessageSid')
+    status = request.values.get('MessageStatus')
+    print(status, sid)
+    return status + sid
 
 
 if __name__ == '__main__':
