@@ -1,6 +1,5 @@
 import os
 
-from twilio.jwt.access_token import AccessToken
 from twilio.rest import Client
 
 TWILIO_ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
