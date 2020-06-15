@@ -7,7 +7,7 @@ if __name__ == '__main__':
 
     message = client.messages.create(
         from_='whatsapp:+14155238886',
-        body='body',
+        body='This body has *bold*, _italics_, ~strikethrough~, and ```code``` formatting',
         to='whatsapp:+12065791501',
     )
 
