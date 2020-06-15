@@ -33,5 +33,12 @@ def sms_ahoy_reply_status_callback():
     return status + sid
 
 
+@app.route('/whatsapp', methods=['POST'])
+def whatsapp_reply():
+    resp = MessagingResponse()
+    resp.message("What's app, doc?", action='/status_callback')
+    return str(resp)
+
+
 if __name__ == '__main__':
     app.run(port=8767)
